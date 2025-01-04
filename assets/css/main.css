@@ -3888,8 +3888,7 @@ input, select, textarea {
 		}
 
  .bball{
-	display: block;
-	text-align: center;
+	padding-left: 2rem;
 } 
 
 		@media screen and (max-width: 736px) {
