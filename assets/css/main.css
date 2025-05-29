@@ -9,8 +9,8 @@
 /* custom css */
 
 .proj{
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+	margin-top: 2rem;
+	margin-bottom: 2rem;
 }
 .vols{
 	background-color: #493382;
@@ -92,7 +92,7 @@ input, select, textarea {
 }
 /* use something besides margin to center pic */
 .profPic{
-	height: 8.93rem;
+	height: 9.93rem;
 	width: 7.68rem;
 	border-radius: 50%;
 	display: block;
@@ -106,8 +106,8 @@ input, select, textarea {
 @media screen and (max-width: 1280px) {
 	.profPic{
 		border-radius: 50%;
-		height: 2.5rem;
-		width: 2rem;
+		height: 3.5rem;
+		width: 3rem;
 	}
 }
 
