@@ -20,7 +20,9 @@
 	justify-content: space-around;
 	
 }
-
+.pulse{
+	margin-top: 100px;
+}
 .groups{
 	width: 200px;
 }
