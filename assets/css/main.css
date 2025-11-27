@@ -7,7 +7,7 @@
 */
 
 /* custom css */
-@media screen and (max-width: 736px) {
+ @media screen and (max-width: 736px) {
   .wrapper > .inner {
     padding: 1em;
     width: 100%;
@@ -24,7 +24,7 @@
     width: 100% !important;
     text-align: center;
   }
-}
+} 
 .proj{
 	margin-top: 2rem;
 	margin-bottom: 2rem;
@@ -44,6 +44,23 @@
 	width: 200px;
 }
 
+/* .vid,
+.vid-2 {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+section {
+    overflow: hidden; /* Contain any overflowing content */
+/* } */
+
+/* Specifically target the video containers */
+/* section > div {
+    max-width: 100%;
+    overflow: hidden;
+} */ 
+
 .vid{
 	height: 400px;
 	width: 500px;
@@ -53,6 +70,7 @@
 	height: 300px;
 	width: 500px;
 }
+
 
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
@@ -3968,28 +3986,4 @@ input, select, textarea {
 
 		#intro p {
 			font-size: 1.25em;
-		}
-
-			@media screen and (max-width: 980px) {
-
-				#intro p br {
-					display: none;
-				}
-
-			}
-
-			@media screen and (max-width: 736px) {
-
-				#intro p {
-					font-size: 1em;
-				}
-
-			}
-
-		@media screen and (max-width: 1280px) {
-
-			#intro {
-				background-attachment: scroll;
-			}
-
 		}
