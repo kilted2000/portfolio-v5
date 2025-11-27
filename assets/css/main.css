@@ -62,13 +62,13 @@ section {
 } */ 
 
 .vid{
-	height: 400px;
-	width: 500px;
+	
+	width: 100%;
 }
 
 .vid-2{
-	height: 300px;
-	width: 500px;
+	
+	width: 100%;
 }
 
 
@@ -3986,4 +3986,28 @@ input, select, textarea {
 
 		#intro p {
 			font-size: 1.25em;
+		}
+
+			@media screen and (max-width: 980px) {
+
+				#intro p br {
+					display: none;
+				}
+
+			}
+
+			@media screen and (max-width: 736px) {
+
+				#intro p {
+					font-size: 1em;
+				}
+
+			}
+
+		@media screen and (max-width: 1280px) {
+
+			#intro {
+				background-attachment: scroll;
+			}
+
 		}
