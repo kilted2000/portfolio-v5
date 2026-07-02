@@ -31,10 +31,11 @@
 }
 .vols{
 	background-color: #493382;
+	
 }
 .orgs{
 	display: flex;
-	justify-content: space-around;
+	justify-content:space-around;
 	
 }
 .pulse{
@@ -42,6 +43,14 @@
 }
 .groups{
 	width: 200px;
+}
+
+.gcmem{
+	width: 15rem;
+}
+
+.devmem{
+	width: 16rem;
 }
 
 /* .vid,

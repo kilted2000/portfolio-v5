@@ -25,6 +25,47 @@
 
 	gtag('config', 'G-4B9QKJ8RGH');
 </script>
+<script>
+	async function getLastPlayedSong(username, apiKey) {
+  const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`;
+  
+  const res = await fetch(url);
+  const data = await res.json();
+  
+  const track = data.recenttracks.track[0];
+  
+  return {
+    name: track.name,
+    artist: track.artist['#text'],
+    album: track.album['#text'],
+    playedAt: track.date?.['#text'] ?? 'Now playing'
+  };
+  //use DOM 
+}
+//--------------------------
+// <recenttracks user="RJ" page="1" perPage="10" totalPages="3019">
+//   <track nowplaying="true">
+//     <artist mbid="2f9ecbed-27be-40e6-abca-6de49d50299e">Aretha Franklin</artist>
+//     <name>Sisters Are Doing It For Themselves</name>
+//     <mbid/>
+//     <album mbid=""/>
+//     <url>www.last.fm/music/Aretha+Franklin/_/Sisters+Are+Doing+It+For+Themselves</url>
+//     <date uts="1213031819">9 Jun 2008, 17:16</date>
+//     <streamable>1</streamable>
+//   </track>
+//   ...
+// </recenttracks>
+//-------------------------
+async function startPolling(username, apiKey, onUpdate) {
+  const fetchAndUpdate = async () => {
+    const track = await getLastPlayedSong(username, apiKey);
+    onUpdate(track);
+  };
+
+  await fetchAndUpdate(); 
+  return setInterval(fetchAndUpdate, 30_000);
+}
+</script>
 
 <body class="is-preload">
 
@@ -53,6 +94,7 @@
 				<h2>Need a new website?</h2>
 				<h2>Want a better one?</h2>
 				<h2>Need a full stack web application?</h2>
+				<h2>Want to know how AI can be used to grow your business?</h2>
 				<p>You've come to the right place! I'm a software developer based in Memphis,TN who enjoys using code to solve your real world business problems. I am a proven leader in the Memphis technology community and I'm open to freelance work as well as longer term contracts.</p>
 				<ul class="actions">
 					<li><a href="https://docs.google.com/document/d/1n4jo9JE2_jFzTC_GIS2VteuUnjdG9PejZPvbBhy5RG0/edit?usp=sharing"
@@ -61,20 +103,25 @@
 							Github</a></li>
 					<li><a href="https://www.linkedin.com/in/richardwhittingtonse/" class="button scrolly"
 							target="_blank">LinkedIn</a></li>
+								<li><a href="https://901-technologies.com/" class="button scrolly"
+							target="_blank">Web Agency</a></li>
 				</ul>
+				 <div class="lastPlayed"></div>
 			</div>
 		</section>
-		<!-- <section>
+		 <section>
 						<div class="vols">
-							<d2>Proven Memphis Technology Leader</d2>
-							<div class="orgs">
+							<d2>Proven Memphis Technology Leader</d2> 
+							
 							<p>Active With:</p>
+							<div class="orgs">
 							<img src="images/untitled.png" alt="CodeConnector Logo" class="groups">
-							<img src="images/devmem.png" alt="DevMemphis Logo" class="groups">
-							<img src="images/givecamp-logo-sm.png" alt="GiveCamp Memphis Logo" class="groups">
+							<img src="images/devmem.png" alt="DevMemphis Logo" class="groups devmem">
+							<img src="images/givecamp-logo-sm.png" alt="GiveCamp Memphis Logo" class="groups gcmem">
 							</div>
 						</div>
-					</section> -->
+						</div>
+					</section> 
 		<!-- One -->
 		<section id="one" class="wrapper style2 spotlights ctn">
 			<!-- <section>
@@ -240,7 +287,7 @@
 											class="icon brands fa-linkedin-in" target="_blank"><span
 												class="label">LinkedIn</span></a></li>
 												<li><a href="https://www.facebook.com/profile.php?id=61590668922495"
-											class="icon brands fa-facebook-in" target="_blank"><span
+											class="icon brands fa-facebook" target="_blank"><span
 												class="label">FaceBook</span></a></li>
 								</ul>
 							</li>
