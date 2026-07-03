@@ -40,7 +40,7 @@
     album: track.album['#text'],
     playedAt: track.date?.['#text'] ?? 'Now playing'
   };
-  //use DOM 
+  //use DOM document.getElementById('lastSong').innerHtml
 }
 //--------------------------
 // <recenttracks user="RJ" page="1" perPage="10" totalPages="3019">
@@ -106,7 +106,7 @@ async function startPolling(username, apiKey, onUpdate) {
 								<li><a href="https://901-technologies.com/" class="button scrolly"
 							target="_blank">Web Agency</a></li>
 				</ul>
-				 <div class="lastPlayed"></div>
+				 <div class="lastPlayed" id="lastSong"></div>
 			</div>
 		</section>
 		 <section>
