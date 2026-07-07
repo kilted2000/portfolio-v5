@@ -20,9 +20,7 @@
 	max-width: 100%;
 	height: auto;
 }
-  #wrapper{
-	width: 100%;
-  }
+
  @media screen and (max-width: 736px) {
   .wrapper > .inner {
     padding: 1em;
@@ -59,6 +57,8 @@
 .pulse{
 	margin-top: 100px;
 }
+
+
  /* .groups{
 	width: 100%;
 	max-width: 100rem;
@@ -129,20 +129,20 @@ section {
 .pics {
 	height: 15rem;
 	width: 27rem;
-	max-width: 100%;   /* never exceed its container */
-	height: auto;      /* preserve aspect ratio once width shrinks */
+	max-width: 100%;   
+	height: auto;      
 }
 
 .vols.flex-container {
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-between;
 	background-color: #00498F;
 }
 
 @media screen and (max-width: 736px) {
 	.pics {
 		width: 100%;
-		max-width: 20rem; /* or whatever looks right at small sizes */
+		max-width: 20rem; 
 	}
 }
 html, body, div, span, applet, object,
@@ -210,7 +210,7 @@ input, select, textarea {
 	-ms-appearance: none;
 	appearance: none;
 }
-/* use something besides margin to center pic */
+
 .profPic{
 	height: 9.93rem;
 	width: 7.68rem;
