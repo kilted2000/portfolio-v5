@@ -321,11 +321,16 @@
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/index.js"></script>
-	<script>document.querySelectorAll('*').forEach(el => {
-  if (el.scrollWidth > document.documentElement.clientWidth + 1) {
-    console.log(el, 'scrollWidth:', el.scrollWidth, 'viewport:', document.documentElement.clientWidth);
+	<script>const vw = document.documentElement.clientWidth;
+const offenders = [];
+document.querySelectorAll('*').forEach(el => {
+  const rect = el.getBoundingClientRect();
+  if (rect.right > vw + 1 || rect.left < -1) {
+    offenders.push({ el, right: rect.right, left: rect.left, width: rect.width });
   }
-});</script>
+});
+offenders.sort((a, b) => b.right - a.right);
+console.log(offenders.slice(0, 15));</script>
 
 
 </body>
