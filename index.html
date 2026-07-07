@@ -26,45 +26,45 @@
 	gtag('config', 'G-4B9QKJ8RGH');
 </script>
 <script>
-	async function getLastPlayedSong(username, apiKey) {
-  const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${username}&api_key=${apiKey}&format=json&limit=1`;
-  
-  const res = await fetch(url);
-  const data = await res.json();
-  
-  const track = data.recenttracks.track[0];
-  
-  return {
-    name: track.name,
-    artist: track.artist['#text'],
-    album: track.album['#text'],
-    playedAt: track.date?.['#text'] ?? 'Now playing'
-  };
-  //use DOM document.getElementById('lastSong').innerHtml
-}
-//--------------------------
-// <recenttracks user="RJ" page="1" perPage="10" totalPages="3019">
-//   <track nowplaying="true">
-//     <artist mbid="2f9ecbed-27be-40e6-abca-6de49d50299e">Aretha Franklin</artist>
-//     <name>Sisters Are Doing It For Themselves</name>
-//     <mbid/>
-//     <album mbid=""/>
-//     <url>www.last.fm/music/Aretha+Franklin/_/Sisters+Are+Doing+It+For+Themselves</url>
-//     <date uts="1213031819">9 Jun 2008, 17:16</date>
-//     <streamable>1</streamable>
-//   </track>
-//   ...
-// </recenttracks>
-//-------------------------
-async function startPolling(username, apiKey, onUpdate) {
-  const fetchAndUpdate = async () => {
-    const track = await getLastPlayedSong(username, apiKey);
-    onUpdate(track);
-  };
+    const USERNAME = "kilted2000";
+    const API_KEY = "734cdfa8c8dc7b8af91836576c312d84";
 
-  await fetchAndUpdate(); 
-  return setInterval(fetchAndUpdate, 30_000);
-}
+    async function getLastPlayedSong() {
+      const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${USERNAME}&api_key=${API_KEY}&format=json&limit=1`;
+      const res = await fetch(url);
+      const data = await res.json();
+
+      const track = data.recenttracks.track[0];
+
+      return {
+        name: track.name,
+        artist: track.artist['#text'],
+        album: track.album['#text'],
+      };
+    }
+
+    function render(track) {
+      const container = document.getElementById('lastSong');
+      container.innerHTML = `
+        <div>
+			<h2>Last Song Played on Spotify:</h2>
+          <strong>${track.name}</strong><br>
+          ${track.artist} — ${track.album}<br>
+        </div>
+      `;
+    }
+
+    async function start() {
+      const track = await getLastPlayedSong();
+      render(track);
+      setInterval(async () => {
+        const updated = await getLastPlayedSong();
+        render(updated);
+      }, 30000);
+    }
+
+    start();
+
 </script>
 
 <body class="is-preload">
@@ -88,7 +88,7 @@ async function startPolling(username, apiKey, onUpdate) {
 
 		<!-- Intro -->
 
-		<section id="intro" class="wrapper style1 fullscreen fade-up">
+		<section id="intro" class="wrapper style1 fullscreen fade-up" style="background-color: #00498F;">
 			<div class="inner bio">
 				<h1>Richard Whittington - Founder - 901 Technologies</h1>
 				<h2>Need a new website?</h2>
@@ -106,22 +106,25 @@ async function startPolling(username, apiKey, onUpdate) {
 								<li><a href="https://901-technologies.com/" class="button scrolly"
 							target="_blank">Web Agency</a></li>
 				</ul>
-				 <div class="lastPlayed" id="lastSong"></div>
+				 <section class="lastPlayed" id="lastSong"></section>
 			</div>
 		</section>
-		 <section>
+		<div class="main">
+		  <section class="community">
 						<div class="vols">
 							<d2>Proven Memphis Technology Leader</d2> 
 							
 							<p>Active With:</p>
-							<div class="orgs">
-							<img src="images/untitled.png" alt="CodeConnector Logo" class="groups">
-							<img src="images/devmem.png" alt="DevMemphis Logo" class="groups devmem">
-							<img src="images/givecamp-logo-sm.png" alt="GiveCamp Memphis Logo" class="groups gcmem">
-							</div>
+							<div class="vols flex-container">
+							<img src="images/untitled.png" alt="CodeConnector Logo" class="groups pics">
+							<img src="images/devmem.png" alt="DevMemphis Logo" class="groups devmem pics">
+							<img src="images/givecamp-logo-sm.png" alt="GiveCamp Memphis Logo" class="groups gcmem pics">
+						
+							<img src="images/4amalgo.png" alt="Memphis TechScene bio" class="devmem pics">
+							<img src="images/cctalk.png" alt="Image for Code Connector talk I gave" class="devmem pics">
 						</div>
 						</div>
-					</section> 
+					</section>  
 		<!-- One -->
 		<section id="one" class="wrapper style2 spotlights ctn">
 			<!-- <section>
@@ -142,9 +145,9 @@ async function startPolling(username, apiKey, onUpdate) {
 						</ul>
 					</div>
 				</div> 
-			</section>-->
+			</section> -->
 		<section>
-			<div>
+			<div class="image">
                </a>
     <a href="https://www.loom.com/share/fdfb8030cd914879a1acdedff3b29ca9">
       <img class="pulse proj vid-2" src="https://cdn.loom.com/sessions/thumbnails/fdfb8030cd914879a1acdedff3b29ca9-cc7005f4e3d1f242-full-play.gif">
@@ -167,7 +170,7 @@ async function startPolling(username, apiKey, onUpdate) {
             </section>
 
 		<section>
-		<div> 
+		<div class="image"> 
      <a href="https://www.loom.com/share/3128d774e0ed4b61ae449edc6d5798d6" > 
      
     </a>
@@ -188,7 +191,7 @@ async function startPolling(username, apiKey, onUpdate) {
 			</div>
 		</section>
 		<section>
-			<div>
+			<div class="image">
     <a href="https://www.loom.com/share/4dc0cc9b7c084ade827d2e18fd871eab">
       
     </a>
@@ -210,7 +213,7 @@ async function startPolling(username, apiKey, onUpdate) {
 			</div>
 		</section>
 		<section>
-			<div>
+			<div class="image">
     <a href="https://www.loom.com/share/3b653f95da454631a292a07172c96f92">
      
     </a>
@@ -234,7 +237,7 @@ async function startPolling(username, apiKey, onUpdate) {
 
 
 		<!-- Three -->
-		<section id="three" class="wrapper style1 fade-up">
+		<section id="three" class="wrapper style1 fade-up" style="background-color: #00498F;">
 			<div class="inner">
 				<h2>Get in touch</h2>
 				<p>Feel free to reach out if you want to discuss your dream website, or anything else that you might
@@ -300,15 +303,15 @@ async function startPolling(username, apiKey, onUpdate) {
 	</div>
 
 	<!-- Footer -->
-	<footer id="footer" class="wrapper style1-alt">
+	<footer id="footer" class="wrapper style1-alt" style="background-color: #9C9EA1;">
 		<div class="inner">
-			<ul class="menu">
+			<ul class="menu" style="color: aliceblue;">
 				<li>&copy; Richard Whittington 2026</li>
 				<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 			</ul>
 		</div>
 	</footer>
-
+</div>
 	<!-- Scripts -->
 	<script src="assets/js/jquery.min.js"></script>
 	<script src="assets/js/jquery.scrollex.min.js"></script>
@@ -318,6 +321,12 @@ async function startPolling(username, apiKey, onUpdate) {
 	<script src="assets/js/util.js"></script>
 	<script src="assets/js/main.js"></script>
 	<script src="assets/js/index.js"></script>
+	<script>document.querySelectorAll('*').forEach(el => {
+  if (el.scrollWidth > document.documentElement.clientWidth + 1) {
+    console.log(el, 'scrollWidth:', el.scrollWidth, 'viewport:', document.documentElement.clientWidth);
+  }
+});</script>
+
 
 </body>
 

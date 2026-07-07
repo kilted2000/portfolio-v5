@@ -7,10 +7,27 @@
 */
 
 /* custom css */
+/* *{
+	 max-width: fit-content; 
+	 width: 100vw; 
+	
+}  */
+
+.spotlights > section > div {
+  min-width: 0;
+}
+  img, video, svg, canvas {
+	max-width: 100%;
+	height: auto;
+}
+  #wrapper{
+	width: 100%;
+  }
  @media screen and (max-width: 736px) {
   .wrapper > .inner {
     padding: 1em;
-    width: 100%;
+    width: 100vw;
+	max-width: fit-content;
   }
 }
 @media screen and (max-width: 736px) {
@@ -29,29 +46,50 @@
 	margin-top: 2rem;
 	margin-bottom: 2rem;
 }
-.vols{
-	background-color: #493382;
-	
+.vols {
+	width: 100%;
+	max-width: 75rem; 
+	background-color: #3e4094;
 }
-.orgs{
+ .orgs{
 	display: flex;
-	justify-content:space-around;
+	 justify-content:space-around;  
 	
-}
+} 
 .pulse{
 	margin-top: 100px;
 }
-.groups{
-	width: 200px;
+ /* .groups{
+	width: 100%;
+	max-width: 100rem;
 }
 
 .gcmem{
-	width: 15rem;
+	width: 100%;
+	max-width: 100rem;
 }
 
 .devmem{
-	width: 16rem;
-}
+	width: 100%;
+	max-width: 100rem;
+} 
+
+.main{
+	width: 100%;
+	max-width: 100rem;
+} */
+/* .pics{
+	height: 15rem;
+	width: 27rem;
+} */
+
+
+/* .community{
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	flex: 1;
+} */
 
 /* .vid,
 .vid-2 {
@@ -80,7 +118,33 @@ section {
 	width: 100%;
 }
 
+.main, .groups, .gcmem, .devmem {
+  width: 100%;
+   max-width: 100rem;  
+}
 
+#wrapper, .main {
+  overflow-x: hidden;
+}
+.pics {
+	height: 15rem;
+	width: 27rem;
+	max-width: 100%;   /* never exceed its container */
+	height: auto;      /* preserve aspect ratio once width shrinks */
+}
+
+.vols.flex-container {
+	flex-wrap: wrap;
+	justify-content: center;
+	background-color: #00498F;
+}
+
+@media screen and (max-width: 736px) {
+	.pics {
+		width: 100%;
+		max-width: 20rem; /* or whatever looks right at small sizes */
+	}
+}
 html, body, div, span, applet, object,
 iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
 pre, a, abbr, acronym, address, big, cite,
@@ -3582,13 +3646,13 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 736px) {
+		/* @media screen and (max-width: 736px) {
 
 			#sidebar + #wrapper {
 				padding-top: 0;
 			}
 
-		}
+		} */
 
 	#header + #wrapper > .wrapper > .inner {
 		margin: 0 auto;
@@ -3975,13 +4039,13 @@ input, select, textarea {
 	padding-left: 2rem;
 }  */
 
-		@media screen and (max-width: 736px) {
+		/* @media screen and (max-width: 736px) {
 
 			#sidebar {
 				display: none;
 			}
 
-		}
+		} */
 
 /* Intro */
 
